@@ -9,3 +9,12 @@ form {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
+#result-count {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#output-details {
+  position: fixed;
+}

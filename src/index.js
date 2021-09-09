@@ -6,6 +6,7 @@ import DndApi from './js/dnd.js';
 
 function clearFields() {
   $('ul#output-list').empty();
+  $('#result-count').empty();
   $('#output-details').empty();
 }
 
@@ -20,7 +21,6 @@ function attachContactListener(item) {
           outputSpellDetails(response);
         } else {
           outputMonsterDetails(response);
-          console.log("monster")
         }
       });
   });
@@ -28,6 +28,7 @@ function attachContactListener(item) {
 
 function createList(response) {
   if (response.results) {
+    $("#result-count").append(`${response.count} results found.`)
     response.results.forEach(item => {
       $('ul#output-list').append(`<li class="list-group-item" id="${item.index}">${item.name}</li>`);
       attachContactListener(item);
@@ -79,7 +80,30 @@ function outputSpellDetails(response) {
 }
 
 function outputMonsterDetails(response) {
-  $('div#output-details').append(`<h5>${response.name}</h5>`);
+  let subtype = ""
+  let speed = `${response.speed.walk}`
+  if (response.subtype !== null) {
+    subtype = ` (${response.subtype})`
+  }
+  if (response.speed.climb !== undefined) {
+    speed += ` climb ${response.speed.climb}`
+  }
+  if (response.speed.burrow !== undefined) {
+    speed += ` burrow ${response.speed.burrow}`
+  }
+  if (response.speed.fly !== undefined) {
+    speed += ` fly ${response.speed.fly}`
+  }
+  if (response.speed.climb !== undefined) {
+    speed += ` climb ${response.speed.climb}`
+  }
+  let subheaderLine = `${response.size} ${response.type}${subtype}, ${response.alignment}`
+  $('div#output-details').append(`<h5>${response.name}</h5>
+  <p><em>${subheaderLine}</em></p>
+  <p><b>Armor Class</b> ${response.armor_class}</p>
+  <p><b>Hit Points</b> ${response.hit_points} (${response.hit_dice})</p>
+  <p><b>Speed</b> ${speed}</p>
+  <p><b>STR:</b> ${response.strength}&nbsp;&nbsp; <b>DEX:</b> ${response.dexterity}&nbsp;&nbsp; <b>CON:</b> ${response.constitution}&nbsp;&nbsp; <b>INT:</b> ${response.intelligence}&nbsp;&nbsp; <b>WIS:</b> ${response.wisdom}&nbsp;&nbsp; <b>CHA:</b> ${response.charisma}`);
 }
 
 $(document).ready(function () {
