@@ -6,37 +6,90 @@
 <body>
   <div class="container">
     <h3>Dungeons and Dragons 5th Edition Almanac</h3>
-    <form id="spell-search">
-      <h4>Spell Searcher</h4>
+    <br>
+    <h4>Spell Searcher</h4>
+    <form class="form-inline" id="spell-search">
+      <div class="form-group mb-2">
       <label for="spell-level">Level</label>
-      <select name="spell-level" id="spell-level">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>
-      <label for="spell-school">School</label>
-      <select name="spell-school" id="spell-school">
-        <option value="abjuration">Abjuration</option>
-        <option value="transmutation">Transmutation</option>
-        <option value="conjuration">Conjuration</option>
-        <option value="divination">Divination</option>
-        <option value="enchantment">Enchantment</option>
-        <option value="evocation">Evocation</option>
-        <option value="illusion">Illusion</option>
-        <option value="necromancy">Necromancy</option>
-      </select>
-      <button type="submit">Look up spells!</button>
+        <select class="form-control" name="spell-level" id="spell-level">
+          <option value="0,1,2,3,4,5,6,7,8,9">Any</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+      <div class="form-group mb-2">
+        <label for="spell-school">School</label>
+        <select name="spell-school" class="form-control" id="spell-school">
+          <option value="abjuration,transmutation,conjuration,divination,enchantment,evocation,illusion,necromancy">Any school</option>
+          <option value="abjuration">Abjuration</option>
+          <option value="transmutation">Transmutation</option>
+          <option value="conjuration">Conjuration</option>
+          <option value="divination">Divination</option>
+          <option value="enchantment">Enchantment</option>
+          <option value="evocation">Evocation</option>
+          <option value="illusion">Illusion</option>
+          <option value="necromancy">Necromancy</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Look up spells!</button>
+    </form>
+    <h4>Monster Searcher</h4>
+    <form class="form-inline" id="monster-search">
+      <div class="form-group mb-2">
+      <label for="challenge-rating">Challenge Rating</label>
+        <select class="form-control" name="challenge-rating" id="challenge-rating">
+          <option value="0,.125,.25,.5,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,30">Any</option>
+          <option value="0">0</option>
+          <option value=".125">1/8</option>
+          <option value=".25">1/4</option>
+          <option value=".5">1/2</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Look up monsters!</button>
     </form>
     <div id="error-output"></div>
-    <ul id="spell-list"></ul>
-    <div id="spell-details"></div>
+
+    <div class="row">
+      <div class="col-sm">
+        <ul class="list-group" id="output-list"></ul>
+      </div>
+      <div class="col-sm">
+        <div id="output-details"></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
